@@ -1,15 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
 import Todo from "./components/Todo";
-import React from "react";
+// import React from "react";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
+import React, { useState } from "react";
 
 
 function App(props) {
-function addTask(name) {
-  alert(name);
-}
+
+  // function addTask(name) {
+  //   alert(name);
+  // }
+  const [tasks, setTasks] = useState(props.tasks);
+
+  function addTask(name) {
+    const newTask = { id: "id", name, completed: false };
+    setTasks([...tasks, newTask]);
+    console.log(tasks)
+  }
+
+
   const taskList = props.tasks.map((task) => <Todo
     id={task.id}
     name={task.name}
@@ -19,8 +30,8 @@ function addTask(name) {
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      <Form addTask={addTask}/>
-    
+      <Form addTask={addTask} />
+
       <div className="filters btn-group stack-exception">
         <FilterButton />
         <FilterButton />
