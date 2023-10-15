@@ -11,6 +11,7 @@ function Form(props) {
         e.preventDefault();
         props.addTask(name);
         setName("");
+       
     }
 
     return (
